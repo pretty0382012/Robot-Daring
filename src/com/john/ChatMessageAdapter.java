@@ -132,12 +132,12 @@ public class ChatMessageAdapter extends BaseAdapter
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent();
-				Bundle bd=new Bundle();
-				bd.putString("msg",((Button) v).getText().toString());
-				intent.putExtras(bd);
-				intent.setClass(weak.get().getBaseContext(),EditTextActivity.class);
-				weak.get().startActivity(intent);
+				switch(v.getId()){
+				case R.id.id_to_msg_info:jamp2EditTextActivity(v,R.drawable.chatto_bg_normal);break;
+				case R.id.id_from_msg_info:jamp2EditTextActivity(v,R.drawable.chatfrom_bg_normal);break;
+				
+				}
+				
 			}
 		});
 		return convertView;
@@ -156,7 +156,15 @@ public class ChatMessageAdapter extends BaseAdapter
 	/*
 	 * 按对话框准跳EditTextActivity
 	 */
-	
+	private void jamp2EditTextActivity(View v,int resid){
+		Intent intent=new Intent();
+		Bundle bd=new Bundle();
+		bd.putString("msg",((Button) v).getText().toString());
+		bd.putInt("resid",resid );
+		intent.putExtras(bd);
+		intent.setClass(weak.get().getBaseContext(),EditTextActivity.class);
+		weak.get().startActivity(intent);
+	}
 		
 	
 

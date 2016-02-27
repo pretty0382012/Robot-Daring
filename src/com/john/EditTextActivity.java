@@ -22,9 +22,11 @@ public class EditTextActivity extends Activity {
 	    Intent intent = getIntent();
 	    Bundle bundle = intent.getExtras();
 	    String msg = "";
+	    int res=0;
+	    res=bundle.getInt("resid");
 	    msg=bundle.getString("msg");
 		msgedt=(EditText)findViewById(R.id.msgedt);
-		//msgedt.setInputType(InputType.TYPE_NULL);
+		msgedt.setBackgroundResource(res);
 		InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(msgedt.getWindowToken(), 0); //myEdit是你的EditText对象
 		msgedt.setText(msg);
